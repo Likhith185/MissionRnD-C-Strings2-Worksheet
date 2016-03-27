@@ -11,6 +11,18 @@ Note:Dont modify original string Neglect Spaces at the right end and at left end
 #include <stdlib.h>
 
 char * get_last_word(char * str){
-
-	return NULL;
+	int i = 0;
+	char *last_word, *last_before;
+	last_word = str;
+	while (str[i] != '\0'){
+		if (str[i] == ' '&&str[i + 1] != ' '&&str[i + 1] != '\0')
+			last_word = str + i + 1;
+		i++;
+	}
+	last_before = (char *)malloc(i*sizeof(char));
+	for (i = 0; last_word[i] != '\0'&&last_word[i] != ' '; i++)
+		last_before[i] = last_word[i];
+	last_before[i] = '\0';
+	return last_before;
 }
+
